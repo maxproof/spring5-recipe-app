@@ -24,7 +24,7 @@ public class Recipe {
     @Lob //large object field
     private Byte[] image;
 
-    @Enumerated(value = EnumType.STRING) //pas ORDINAL car l'ordre peutchanger
+    @Enumerated(value = EnumType.STRING) //pas ORDINAL car l'ordre peut changer
     private Difficulty difficulty;
 
     @OneToOne(cascade = CascadeType.ALL)
