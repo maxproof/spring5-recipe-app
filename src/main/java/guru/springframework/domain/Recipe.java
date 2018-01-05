@@ -11,7 +11,7 @@ import java.util.Set;
 public class Recipe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //the framework generate an ID for us
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String description;
@@ -27,10 +27,10 @@ public class Recipe {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients = new HashSet<>();
 
-    @Lob //large object field
+    @Lob
     private Byte[] image;
 
-    @Enumerated(value = EnumType.STRING) //pas ORDINAL car l'ordre peut changer
+    @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -38,13 +38,15 @@ public class Recipe {
 
     @ManyToMany
     @JoinTable(name = "recipe_category",
-        joinColumns = @JoinColumn(name = "recipe_id"),
+            joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
     public void setNotes(Notes notes) {
-        this.notes = notes;
-        notes.setRecipe(this);
+        if (notes != null) {
+            this.notes = notes;
+            notes.setRecipe(this);
+        }
     }
 
     public Recipe addIngredient(Ingredient ingredient){
