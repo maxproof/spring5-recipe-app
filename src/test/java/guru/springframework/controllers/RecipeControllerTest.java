@@ -63,6 +63,7 @@ public class RecipeControllerTest {
 
     @Test
     public void testPostNewRecipeForm() throws Exception {
+
         RecipeCommand command = new RecipeCommand();
         command.setId(2L);
 
