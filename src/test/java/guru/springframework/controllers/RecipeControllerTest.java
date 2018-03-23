@@ -20,7 +20,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class RecipeControllerTest {
 
-
     @Mock
     RecipeService recipeService;
 
@@ -63,6 +62,7 @@ public class RecipeControllerTest {
 
     @Test
     public void testPostNewRecipeForm() throws Exception {
+
         RecipeCommand command = new RecipeCommand();
         command.setId(2L);
 
